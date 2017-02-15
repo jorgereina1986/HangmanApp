@@ -1,4 +1,4 @@
-package com.jorgereina.hangmanapp;
+package com.jorgereina.hangmanapp.retrofit;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

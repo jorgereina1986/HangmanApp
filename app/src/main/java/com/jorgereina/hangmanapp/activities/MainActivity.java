@@ -1,5 +1,6 @@
-package com.jorgereina.hangmanapp;
+package com.jorgereina.hangmanapp.activities;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.jorgereina.hangmanapp.R;
 
 import java.io.IOException;
 import java.util.Random;
@@ -100,9 +103,20 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                     }
-                } else {
+                }
+                else {
                     guessCount--;
                     guessCountTV.setText(guessCount + "");
+                    if (guessCount == 0) {
+
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        builder.setTitle("Hangman")
+                                .setMessage("You ran out of tries. You Lose. Try Again.")
+                                .setPositiveButton(android.R.string.ok, null);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    }
                 }
 
             }
