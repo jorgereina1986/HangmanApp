@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jorgereina.hangmanapp.R;
 
@@ -35,8 +36,6 @@ public class SplashScreen extends AppCompatActivity {
     private Handler handler;
     private Button button;
 
-    private String[] wordArray;
-
     static String[] listOfWords;
 
 
@@ -53,8 +52,6 @@ public class SplashScreen extends AppCompatActivity {
         handler = new Handler(Looper.getMainLooper());
 
         networkCall();
-
-        wordArray = wordResponse.split("\n"); //splitting response in to sting array
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +97,7 @@ public class SplashScreen extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                Toast.makeText(getApplicationContext(), e+"", Toast.LENGTH_SHORT).show();
             }
 
             @Override
